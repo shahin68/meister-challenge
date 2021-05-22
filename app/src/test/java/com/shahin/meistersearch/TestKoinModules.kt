@@ -7,7 +7,10 @@ import org.junit.Before
 import org.junit.Test
 import org.koin.test.check.checkModules
 
-class TestInjection {
+/**
+ * Unit Test checks whether modules are properly defined
+ */
+class TestKoinModules {
 
     @Before
     fun setUp() {

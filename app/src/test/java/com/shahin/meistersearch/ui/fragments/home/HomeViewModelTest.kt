@@ -15,6 +15,9 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import org.koin.test.inject
 
+/**
+ * Unit Test puts the repository tree on test until and tests results in view model
+ */
 class HomeViewModelTest: KoinTest {
 
     private lateinit var viewModel: HomeViewModel
