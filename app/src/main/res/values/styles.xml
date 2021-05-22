@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!--window background color-->
+        <item name="android:windowBackground">?attr/colorPrimary</item>
+
+        <!--item selectable background effect-->
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
+
+        <!--text views-->
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+
+        <!--card views-->
+        <item name="cardViewStyle">@style/CardViewStyle</item>
+
+        <!--material button style-->
+        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+
+        <!--toolbar style-->
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+    </style>
+
+    <!--region Card View Style-->
+    <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="android:foreground">?android:selectableItemBackground</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Material Button Style-->
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="rippleColor">?attr/colorOnSurface</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="shapeAppearanceOverlay">@style/MaterialButtonShape</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+    <style name="MaterialButtonShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">49%</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Toolbar Style-->
+    <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+    <!--endregion-->
+</resources>
