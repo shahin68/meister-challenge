@@ -5,7 +5,7 @@
     <data>
         <variable
             name="model"
-            type="com.shahin.meistersearch.data.models.Model" />
+            type="com.shahin.meistersearch.data.local.models.Model" />
     </data>
 
     <FrameLayout
