@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Meister Search</string>
+    <string name="generic_placeholder_search">Search …</string>
 </resources>
