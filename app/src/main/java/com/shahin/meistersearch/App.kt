@@ -1,6 +1,7 @@
 package com.shahin.meistersearch
 
 import android.app.Application
+import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
 import com.shahin.meistersearch.di.uiModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,8 @@ class App: Application() {
             androidContext(this@App)
             modules(
                 uiModule,
-                repositoryModule
+                repositoryModule,
+                networkModule
             )
         }
     }

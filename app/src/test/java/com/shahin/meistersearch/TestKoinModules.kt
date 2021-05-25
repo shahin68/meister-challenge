@@ -1,5 +1,6 @@
 package com.shahin.meistersearch
 
+import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
 import com.shahin.meistersearch.di.uiModule
 import org.junit.After
@@ -25,7 +26,8 @@ class TestKoinModules {
         checkModules {
             modules(
                 uiModule,
-                repositoryModule
+                repositoryModule,
+                networkModule
             )
         }
     }
