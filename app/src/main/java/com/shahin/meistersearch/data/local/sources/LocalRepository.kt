@@ -3,5 +3,6 @@ package com.shahin.meistersearch.data.local.sources
 import com.shahin.meistersearch.data.local.models.Model
 
 interface LocalRepository {
-    fun getModel(): Model
+    @Deprecated("To be removed") fun getModel(): Model
+    fun getToken(): String
 }
