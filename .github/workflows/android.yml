@@ -21,7 +21,7 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Run Unit Tests
-      run: ./gradlew testStagingDebugUnitTest
+    - name: Android Test Report Action
+      uses: asadmansr/android-test-report-action@v1.2.0
     - name: Build with Gradle
       run: ./gradlew build
