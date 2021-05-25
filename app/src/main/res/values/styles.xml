@@ -1,0 +1,74 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--window background color-->
+        <item name="android:windowBackground">?attr/colorPrimary</item>
+
+        <!--system bars config-->
+        <item name="android:statusBarColor" tools:targetApi="m">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">?attr/colorPrimary</item>
+
+        <!--item selectable background effect-->
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
+
+        <!--text views-->
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+
+        <!--card views-->
+        <item name="cardViewStyle">@style/CardViewStyle</item>
+
+        <!--material button-->
+        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+
+        <!--toolbar-->
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+
+        <!--search view-->
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+
+        <!--autocomplete view-->
+        <item name="autoCompleteTextViewStyle">@style/AutoCompleteTextView</item>
+    </style>
+
+    <!--region Card View Style-->
+    <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="android:foreground">?android:selectableItemBackground</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Material Button Style-->
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="rippleColor">?attr/colorOnSurface</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="shapeAppearanceOverlay">@style/MaterialButtonShape</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+    <style name="MaterialButtonShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">49%</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Toolbar Style-->
+    <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="contentInsetRight">0dp</item>
+        <item name="contentInsetStart">0dp</item>
+    </style>
+    <!--endregion-->
+
+    <!--region SearchView Style-->
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="closeIcon">@drawable/ic_close</item>
+        <item name="queryBackground">@null</item>
+    </style>
+
+    <style name="AutoCompleteTextView" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColorHint">?attr/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/generic_text_size_16sp</item>
+    </style>
+    <!--endregion-->
+</resources>
