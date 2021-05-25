@@ -1,4 +1,4 @@
-package com.shahin.meistersearch.extensions
+package com.shahin.meistersearch.general.extensions
 
 import android.view.View
 import android.view.ViewGroup
