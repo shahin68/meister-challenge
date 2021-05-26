@@ -1,10 +1,10 @@
-package com.shahin.meistersearch.data.remote.models.search
+package com.shahin.meistersearch.data.remote.models.response.search
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.shahin.meistersearch.data.remote.models.search.items.ProjectItem
-import com.shahin.meistersearch.data.remote.models.search.items.SectionItem
-import com.shahin.meistersearch.data.remote.models.search.items.TaskItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.ProjectItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.SectionItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

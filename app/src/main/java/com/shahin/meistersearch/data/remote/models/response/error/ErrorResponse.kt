@@ -1,4 +1,4 @@
-package com.shahin.meistersearch.data.remote.models.error
+package com.shahin.meistersearch.data.remote.models.response.error
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

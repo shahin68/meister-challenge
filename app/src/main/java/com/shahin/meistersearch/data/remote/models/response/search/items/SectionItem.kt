@@ -1,4 +1,4 @@
-package com.shahin.meistersearch.data.remote.models.search.items
+package com.shahin.meistersearch.data.remote.models.response.search.items
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

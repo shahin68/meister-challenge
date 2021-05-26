@@ -1,4 +1,4 @@
-package com.shahin.meistersearch.data.remote.models.paging
+package com.shahin.meistersearch.data.remote.models.response.paging
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
