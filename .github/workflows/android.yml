@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: unit_test_report
-          path: reports/tests/testDebugUnitTest/
+          path: app/build/reports/tests/testDebugUnitTest/
         
  
   build:
