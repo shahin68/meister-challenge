@@ -2,6 +2,7 @@ package com.shahin.meistersearch.ui.fragments.home
 
 import com.google.common.truth.Truth
 import com.shahin.meistersearch.data.Repository
+import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
 import com.shahin.meistersearch.di.uiModule
 import org.junit.After
@@ -28,7 +29,8 @@ class HomeViewModelTest: KoinTest {
         startKoin {
             modules(
                 uiModule,
-                repositoryModule
+                repositoryModule,
+                networkModule
             )
         }
         viewModel = HomeViewModel(repository)
@@ -41,9 +43,9 @@ class HomeViewModelTest: KoinTest {
 
     @Test
     fun `test flow of data from local repo to homeViewModel - should return true`() {
-        val state = viewModel.getModel()
+        val state = viewModel.getToken()
         print(state)
-        Truth.assertThat(state.name.isNotBlank() || state.pass.isNotBlank())
+        Truth.assertThat(state.isNotBlank())
     }
 
     @Test
