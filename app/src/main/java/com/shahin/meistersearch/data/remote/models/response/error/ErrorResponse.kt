@@ -8,5 +8,5 @@ import kotlinx.parcelize.Parcelize
 data class ErrorResponse(
 
     @SerializedName("errors")
-    val errors: List<ErrorsItem>? = null
+    val errors: List<ErrorItem>? = null
 ) : Parcelable
