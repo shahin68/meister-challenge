@@ -1,6 +1,6 @@
 package com.shahin.meistersearch.network
 
-import com.shahin.meistersearch.data.remote.models.ErrorResponse
+import com.shahin.meistersearch.data.remote.models.error.ErrorResponse
 
 /**
  * class representing restricted network response
