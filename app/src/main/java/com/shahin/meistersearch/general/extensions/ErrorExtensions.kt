@@ -6,6 +6,8 @@ import com.shahin.meistersearch.data.remote.models.response.error.ErrorResponse
 /**
  * extension to extract clean message from error response model
  * it returns a user friendly message
+ *
+ * @return nullable string
  */
 fun ErrorResponse?.extractCleanMessage(context: Context): String? {
     val stringBuilder = StringBuilder()

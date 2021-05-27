@@ -11,14 +11,6 @@ import retrofit2.http.Query
 interface Api {
 
     /**
-     * Example of exposed (No token in header meaning it's exposed to calls)
-     */
-    @RestrictTo(RestrictTo.Scope.SUBCLASSES)
-    @POST("")
-    @Headers("Exposed: true", "Monolingual: true")
-    suspend fun exposedCallExample(): Response<Any>
-    
-    /**
      * ***interface calling search***
      *
      * [Headers]
@@ -41,6 +33,17 @@ interface Api {
      *
      * @param responseFormat
      * defines response type
+     *
+     *
+     *
+     * Example of exposed (No token in header meaning it's exposed to calls)
+     * <pre class="prettyprint">
+     * @POST("")
+     * @Headers("Exposed: true", "Monolingual: true")
+     * suspend fun exposedCallExample(): Response<Any>
+     * </pre>
+     *
+     *@return search response
      */
     @POST("search")
     @Headers("Monolingual: true")
