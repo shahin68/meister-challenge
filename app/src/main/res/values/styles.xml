@@ -30,6 +30,9 @@
 
         <!--linear progress bar-->
         <item name="linearProgressIndicatorStyle">@style/LinearProgressIndicator</item>
+
+        <!--recycler view-->
+        <item name="recyclerViewStyle">@style/RecyclerViewStyle</item>
     </style>
 
     <!--region Card View Style-->
@@ -76,6 +79,7 @@
     </style>
     <!--endregion-->
 
+    <!--region Progressbar Style-->
     <style name="LinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.LinearProgressIndicator</item>
         <item name="trackThickness">@dimen/progressbar_thickness</item>
@@ -85,4 +89,14 @@
     <style name="ThemeOverlay.App.LinearProgressIndicator" parent="">
         <item name="colorPrimary">@color/purple_700</item>
     </style>
+    <!--endregion-->
+
+    <!--region Progressbar Style-->
+    <style name="RecyclerViewStyle" parent="">
+        <item name="android:scrollbars">vertical|horizontal</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarThumbVertical">@color/purple_700</item>
+        <item name="android:scrollbarThumbHorizontal">@color/purple_700</item>
+    </style>
+    <!--endregion-->
 </resources>
