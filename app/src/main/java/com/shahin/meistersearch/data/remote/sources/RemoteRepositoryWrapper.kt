@@ -2,8 +2,8 @@ package com.shahin.meistersearch.data.remote.sources
 
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
-import com.shahin.meistersearch.data.remote.models.response.error.ErrorResponse
 import com.shahin.meistersearch.data.remote.models.response.error.ErrorItem
+import com.shahin.meistersearch.data.remote.models.response.error.ErrorResponse
 import com.shahin.meistersearch.network.NetworkResult
 import retrofit2.Response
 

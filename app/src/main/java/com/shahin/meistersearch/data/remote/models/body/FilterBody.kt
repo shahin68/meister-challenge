@@ -11,8 +11,8 @@ import kotlinx.parcelize.Parcelize
 data class FilterBody(
 
     @SerializedName("text")
-    val text: String? = null,
+    val text: String? = "",
 
     @SerializedName("status")
-    val status: List<Int>? = null
+    val status: List<Int>? = emptyList()
 ) : Parcelable

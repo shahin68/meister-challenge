@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.shahin.meistersearch.R
 import com.shahin.meistersearch.databinding.FragmentHomeBinding
-import com.shahin.meistersearch.general.extensions.visible
 import com.shahin.meistersearch.ui.fragments.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

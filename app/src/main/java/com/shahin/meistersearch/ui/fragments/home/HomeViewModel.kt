@@ -1,7 +1,13 @@
 package com.shahin.meistersearch.ui.fragments.home
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.shahin.meistersearch.data.Repository
+import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
+import com.shahin.meistersearch.network.NetworkResult
+import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val repository: Repository
@@ -11,4 +17,12 @@ class HomeViewModel(
         return repository.getToken()
     }
 
+    private val _searchResult: MutableLiveData<NetworkResult<SearchResponse>> = MutableLiveData()
+    val searchResult: LiveData<NetworkResult<SearchResponse>> = _searchResult
+
+    fun search(query: String) {
+        viewModelScope.launch {
+            _searchResult.postValue(repository.search(query))
+        }
+    }
 }

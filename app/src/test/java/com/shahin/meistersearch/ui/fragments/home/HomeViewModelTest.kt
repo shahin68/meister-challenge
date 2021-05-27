@@ -4,11 +4,9 @@ import com.google.common.truth.Truth
 import com.shahin.meistersearch.data.Repository
 import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
-import com.shahin.meistersearch.di.uiModule
 import org.junit.After
 import org.junit.Assert.assertNotNull
 import org.junit.Before
-
 import org.junit.Test
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -28,7 +26,6 @@ class HomeViewModelTest: KoinTest {
     fun setUp() {
         startKoin {
             modules(
-                uiModule,
                 repositoryModule,
                 networkModule
             )
