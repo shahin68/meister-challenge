@@ -18,9 +18,19 @@ open class RemoteRepositoryWrapper {
                 NetworkResult.Successful(response.body())
             } else {
                 when (response.code()) {
+                    401 -> NetworkResult.Error(
+                        ErrorResponse(
+                            listOf(
+                                ErrorItem(
+                                    status = response.code(),
+                                    message = "Unauthorized (Refresh token required)"
+                                )
+                            )
+                        )
+                    )
                     500 -> NetworkResult.Error(
                         ErrorResponse(
-                            arrayListOf(
+                            listOf(
                                 ErrorItem(
                                     status = response.code(),
                                     message = "Internal server error!"
@@ -29,24 +39,37 @@ open class RemoteRepositoryWrapper {
                         )
                     )
                     else -> {
-                        try {
-                            val gSon = Gson()
-                            val typedValue = gSon.fromJson(
-                                response.errorBody()?.string(),
-                                ErrorResponse::class.java
-                            )
-                            NetworkResult.Error(typedValue)
-                        } catch (e: JsonSyntaxException) {
+                        if (response.errorBody()?.string().isNullOrEmpty()) {
                             NetworkResult.Error(
                                 ErrorResponse(
-                                   arrayListOf(
-                                       ErrorItem(
-                                           status = response.code(),
-                                           message = response.message()
-                                       )
-                                   )
+                                    listOf(
+                                        ErrorItem(
+                                            status = response.code(),
+                                            message = response.message()
+                                        )
+                                    )
                                 )
                             )
+                        } else {
+                            try {
+                                val gSon = Gson()
+                                val typedValue = gSon.fromJson(
+                                    response.errorBody()?.string(),
+                                    ErrorResponse::class.java
+                                )
+                                NetworkResult.Error(typedValue)
+                            } catch (e: JsonSyntaxException) {
+                                NetworkResult.Error(
+                                    ErrorResponse(
+                                        listOf(
+                                            ErrorItem(
+                                                status = response.code(),
+                                                message = response.message()
+                                            )
+                                        )
+                                    )
+                                )
+                            }
                         }
                     }
                 }

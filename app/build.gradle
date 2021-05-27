@@ -34,6 +34,7 @@ android {
          * This access token is only added for demonstration purposes and will expire soon
          */
         buildConfigField "String", "ACCESS_TOKEN", (secureProps.getProperty("ACCESS_TOKEN") ?: "")
+        buildConfigField "String", "ACCESS_TOKEN_PREFIX", (secureProps.getProperty("ACCESS_TOKEN_PREFIX") ?: "")
     }
 
     buildTypes {

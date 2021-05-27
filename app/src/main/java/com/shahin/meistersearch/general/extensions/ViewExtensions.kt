@@ -28,7 +28,7 @@ fun <T: View> T.hide() {
 /**
  * extension function to set view visibility as VISIBLE or GONE
  */
-fun <T: ViewGroup> T.visibleOrGone(visible: Boolean) {
+fun <T: View> T.visibleOrGone(visible: Boolean) {
     if (visible) {
         visible()
     } else {

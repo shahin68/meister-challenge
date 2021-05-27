@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Meister Search</string>
     <string name="generic_placeholder_search">Search …</string>
+    <string name="empty_view_text_desc">Search for a task using a few keywords</string>
+    <string name="error_text_no_network">Please check your network connection!</string>
 </resources>

@@ -32,6 +32,8 @@
     <!--region Card View Style-->
     <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">@dimen/generic_size_8dp</item>
+        <item name="cardElevation">@dimen/cardview_elevation</item>
         <item name="android:foreground">?android:selectableItemBackground</item>
     </style>
     <!--endregion-->
@@ -39,7 +41,6 @@
     <!--region Material Button Style-->
     <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="rippleColor">?attr/colorOnSurface</item>
-        <item name="backgroundTint">?attr/colorAccent</item>
         <item name="shapeAppearanceOverlay">@style/MaterialButtonShape</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
@@ -50,7 +51,7 @@
     <!--endregion-->
 
     <!--region Toolbar Style-->
-    <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorSurface</item>
         <item name="contentInsetRight">0dp</item>
         <item name="contentInsetStart">0dp</item>
