@@ -8,7 +8,8 @@ import java.util.*
 /**
  * http client interceptor
  * responsible for intercepting http request calls
- * and adding headers
+ *
+ * In case you need to add Headers & Query parameters to all requests
  */
 class HttpInterceptor(
     private val localRepository: LocalRepository
