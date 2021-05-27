@@ -4,9 +4,7 @@ import androidx.annotation.RestrictTo
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
 import retrofit2.Response
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface Api {
 
@@ -37,7 +35,8 @@ interface Api {
      *
      *
      * Example of exposed (No token in header meaning it's exposed to calls)
-     * <pre class="prettyprint">
+     * <pre>
+     * <code>
      * @POST("")
      * @Headers("Exposed: true", "Monolingual: true")
      * suspend fun exposedCallExample(): Response<Any>
@@ -48,7 +47,7 @@ interface Api {
     @POST("search")
     @Headers("Monolingual: true")
     suspend fun search(
-        @Query("filter") filter: FilterBody = FilterBody(),
+        @Query("filter") filter: String,
         @Query("items") itemSize: Int = 50,
         @Query("page") page: Int = 1,
         @Query("sort") sort: String = "id",

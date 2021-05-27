@@ -29,6 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         viewModel.searchResult.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkResult.Successful -> {
+                    binding.emptyView.root.gone()
                     binding.listTasks.visible()
                     tasksAdapter.submitList(it.data?.searchResult?.tasks)
                 }
