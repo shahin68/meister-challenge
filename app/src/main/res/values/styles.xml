@@ -27,6 +27,9 @@
 
         <!--autocomplete view-->
         <item name="autoCompleteTextViewStyle">@style/AutoCompleteTextView</item>
+
+        <!--linear progress bar-->
+        <item name="linearProgressIndicatorStyle">@style/LinearProgressIndicator</item>
     </style>
 
     <!--region Card View Style-->
@@ -72,4 +75,14 @@
         <item name="android:textSize">@dimen/generic_text_size_16sp</item>
     </style>
     <!--endregion-->
+
+    <style name="LinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.LinearProgressIndicator</item>
+        <item name="trackThickness">@dimen/progressbar_thickness</item>
+        <item name="showAnimationBehavior">inward</item>
+    </style>
+
+    <style name="ThemeOverlay.App.LinearProgressIndicator" parent="">
+        <item name="colorPrimary">@color/purple_700</item>
+    </style>
 </resources>

@@ -27,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         setupTaskList()
 
         viewModel.searchResult.observe(viewLifecycleOwner) {
+            onLoading(showLoading = false)
             when (it) {
                 is NetworkResult.Successful -> {
                     binding.emptyView.root.gone()
@@ -58,5 +59,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.emptyView.root.visible()
         binding.emptyView.tvError.visibleOrGone(!errorMessage.isNullOrEmpty())
         binding.emptyView.tvError.text = errorMessage
+    }
+
+    private fun onLoading(showLoading: Boolean) = when {
+        showLoading -> {
+            binding.loading.show()
+        }
+        else -> {
+            binding.loading.hide()
+        }
     }
 }
