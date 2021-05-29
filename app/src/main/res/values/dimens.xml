@@ -2,6 +2,7 @@
 <resources>
     <dimen name="cardview_elevation">3dp</dimen>
     <dimen name="progressbar_thickness">4dp</dimen>
+    <dimen name="searchview_height">60dp</dimen>
 
     <dimen name="generic_size_8dp">8dp</dimen>
     <dimen name="generic_size_16dp">16dp</dimen>

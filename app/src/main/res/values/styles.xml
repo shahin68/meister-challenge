@@ -33,6 +33,9 @@
 
         <!--recycler view-->
         <item name="recyclerViewStyle">@style/RecyclerViewStyle</item>
+
+        <!--material dialog theme-->
+        <item name="materialAlertDialogTheme">@style/MaterialDialogStyle</item>
     </style>
 
     <!--region Card View Style-->
@@ -84,6 +87,7 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.LinearProgressIndicator</item>
         <item name="trackThickness">@dimen/progressbar_thickness</item>
         <item name="showAnimationBehavior">inward</item>
+        <item name="hideAnimationBehavior">inward</item>
     </style>
 
     <style name="ThemeOverlay.App.LinearProgressIndicator" parent="">
@@ -97,6 +101,20 @@
         <item name="android:scrollbarStyle">outsideOverlay</item>
         <item name="android:scrollbarThumbVertical">@color/purple_700</item>
         <item name="android:scrollbarThumbHorizontal">@color/purple_700</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Material Dialog Style-->
+    <style name="MaterialDialogStyle" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/ThemeOverlay.App.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/ThemeOverlay.App.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ThemeOverlay.App.Button</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:foreground">@drawable/ripple_6dp</item>
     </style>
     <!--endregion-->
 </resources>

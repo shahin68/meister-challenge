@@ -1,10 +1,10 @@
 package com.shahin.meistersearch.data.remote.services
 
-import androidx.annotation.RestrictTo
-import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface Api {
 

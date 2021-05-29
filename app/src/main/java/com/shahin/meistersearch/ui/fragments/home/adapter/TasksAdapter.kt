@@ -2,20 +2,20 @@ package com.shahin.meistersearch.ui.fragments.home.adapter
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.shahin.meistersearch.R
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
 import com.shahin.meistersearch.general.extensions.inflate
-import com.shahin.meistersearch.general.views.ViewClickType
+import com.shahin.meistersearch.general.views.ViewClickCallback
 import com.shahin.meistersearch.ui.fragments.home.viewholders.TaskViewHolder
 
 class TasksAdapter(
     private val clickBlock: (
         view: View,
-        viewClickType: ViewClickType<TaskItem>
+        viewClickCallback: ViewClickCallback<TaskItem>
     ) -> Unit
-): ListAdapter<TaskItem, TaskViewHolder>(DiffCallback) {
+): PagingDataAdapter<TaskItem, TaskViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
@@ -25,7 +25,10 @@ class TasksAdapter(
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        if (item != null) {
+            holder.bind(item)
+        }
     }
 
     object DiffCallback : DiffUtil.ItemCallback<TaskItem>() {
@@ -38,7 +41,4 @@ class TasksAdapter(
         }
     }
 
-    override fun submitList(list: List<TaskItem>?) {
-        super.submitList(ArrayList(list))
-    }
 }

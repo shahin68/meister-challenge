@@ -4,13 +4,13 @@ import android.view.View
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
 import com.shahin.meistersearch.databinding.ItemTaskBinding
 import com.shahin.meistersearch.general.viewholders.ClickableViewHolder
-import com.shahin.meistersearch.general.views.ViewClickType
+import com.shahin.meistersearch.general.views.ViewClickCallback
 
 class TaskViewHolder(
     itemView: View,
     clickCallback: (
         view: View,
-        viewClickType: ViewClickType<TaskItem>
+        viewClickCallback: ViewClickCallback<TaskItem>
     ) -> Unit
 ) : ClickableViewHolder<TaskItem>(itemView, clickCallback) {
     private val binding = ItemTaskBinding.bind(itemView)

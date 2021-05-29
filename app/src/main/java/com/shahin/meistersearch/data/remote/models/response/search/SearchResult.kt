@@ -11,11 +11,11 @@ import kotlinx.parcelize.Parcelize
 data class SearchResult(
 
     @SerializedName("projects")
-    val projects: List<ProjectItem>? = null,
+    val projects: List<ProjectItem>,
 
     @SerializedName("tasks")
-    val tasks: List<TaskItem>? = null,
+    val tasks: List<TaskItem>,
 
     @SerializedName("sections")
-    val sections: List<SectionItem>? = null
+    val sections: List<SectionItem>
 ) : Parcelable

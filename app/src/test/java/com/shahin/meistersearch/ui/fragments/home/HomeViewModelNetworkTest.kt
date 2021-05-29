@@ -3,7 +3,9 @@ package com.shahin.meistersearch.ui.fragments.home
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.shahin.meistersearch.data.remote.FakeRepositoryImpl
+import com.shahin.meistersearch.data.remote.models.response.paging.PagingResult
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
+import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
 import com.shahin.meistersearch.network.NetworkResult
 import getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +48,14 @@ class HomeViewModelNetworkTest {
 
         val search = viewModel.searchResult.getOrAwaitValue()
 
-        assertThat(search).isEqualTo(NetworkResult.Successful(SearchResponse()))
+        assertThat(search).isEqualTo(NetworkResult.Successful(SearchResponse(
+            PagingResult(0,0,0,0),
+            SearchResult(
+                emptyList(),
+                emptyList(),
+                emptyList()
+            )
+        )))
     }
 
 }

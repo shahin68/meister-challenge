@@ -9,10 +9,10 @@ import kotlinx.parcelize.Parcelize
 data class SearchResponse(
 
 	@SerializedName("paging")
-	val pagingResult: PagingResult? = null,
+	val pagingResult: PagingResult,
 
 	@SerializedName("results")
-	val searchResult: SearchResult? = null
+	val searchResult: SearchResult
 ) : Parcelable
 
 

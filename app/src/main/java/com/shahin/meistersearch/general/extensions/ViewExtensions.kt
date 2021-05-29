@@ -1,8 +1,10 @@
 package com.shahin.meistersearch.general.extensions
 
 import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 /**
  * extension function to set view visibility as VISIBLE
@@ -56,4 +58,23 @@ fun <T: View> T.visibleOrHide(show: Boolean) {
     } else {
         hide()
     }
+}
+
+/**
+ * Extension providing flow of string
+ */
+fun <T: SearchView> T.onQueryFlow(): StateFlow<String> {
+    val query = MutableStateFlow("")
+    setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            this@onQueryFlow.clearFocus()
+            return false
+        }
+
+        override fun onQueryTextChange(newText: String): Boolean {
+            query.value = newText
+            return true
+        }
+    })
+    return query
 }
