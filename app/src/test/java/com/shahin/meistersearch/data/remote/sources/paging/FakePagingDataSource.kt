@@ -4,14 +4,14 @@ import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.paging.PagingResult
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
-import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import retrofit2.Response
 
 class FakePagingDataSource: PagingDataSource {
 
     private var currentPage = 0
 
-    private val taskItem = TaskItem(
+    private val taskItem = TaskResult(
         id = 0
     )
 
@@ -37,7 +37,7 @@ class FakePagingDataSource: PagingDataSource {
                 text = "hello"
             ) -> {
                 currentPage =+ 1
-                val list = arrayListOf<TaskItem>()
+                val list = arrayListOf<TaskResult>()
                 for (i in 0 until 50) {
                     list.add(taskItem)
                 }

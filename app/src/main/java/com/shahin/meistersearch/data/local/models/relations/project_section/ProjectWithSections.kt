@@ -3,8 +3,8 @@ package com.shahin.meistersearch.data.local.models.relations.project_section
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import com.shahin.meistersearch.data.local.models.Project
-import com.shahin.meistersearch.data.local.models.Section
+import com.shahin.meistersearch.data.local.models.entities.Project
+import com.shahin.meistersearch.data.local.models.entities.Section
 
 /**
  * Many to Many relation between [Project] list & [Section] list

@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.shahin.meistersearch.R
-import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
 import com.shahin.meistersearch.general.extensions.inflate
 import com.shahin.meistersearch.general.views.ViewClickCallback
+import com.shahin.meistersearch.ui.fragments.home.models.TaskItem
 import com.shahin.meistersearch.ui.fragments.home.viewholders.TaskViewHolder
 
 class TasksAdapter(
@@ -37,7 +37,7 @@ class TasksAdapter(
         }
 
         override fun areContentsTheSame(oldItem: TaskItem, newItem: TaskItem): Boolean {
-            return oldItem.name.equals(newItem.name)
+            return oldItem.taskName.equals(newItem.taskName)
         }
     }
 

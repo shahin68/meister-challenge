@@ -1,4 +1,4 @@
-package com.shahin.meistersearch.data.local.models
+package com.shahin.meistersearch.data.local.models.entities
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

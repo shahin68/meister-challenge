@@ -15,6 +15,7 @@ import com.shahin.meistersearch.general.views.ViewClickCallback
 import com.shahin.meistersearch.ui.fragments.BaseFragment
 import com.shahin.meistersearch.ui.fragments.home.adapter.TasksAdapter
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,8 +30,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         when (viewClickCallback) {
             is ViewClickCallback.ToOpen -> {
                 MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(viewClickCallback.data.name)
-                    .setMessage(viewClickCallback.data.name)
+                    .setTitle(viewClickCallback.data.taskName)
+                    .setMessage(viewClickCallback.data.projectName)
                     .setPositiveButton(getString(R.string.generic_action_ok)) { dialog, which ->
                         dialog.dismiss()
                     }
@@ -60,7 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             .onEach {
                 searchJob?.cancel()
                 searchJob = lifecycleScope.launch {
-                    viewModel.searchPaging(it.trim()).collectLatest { pagingData ->
+                    viewModel.searchPagingWithDb(it.trim()).collectLatest { pagingData ->
                         if (isAdded) {
                             tasksAdapter.submitData(
                                 pagingData
@@ -79,12 +80,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         tasksAdapter.addLoadStateListener { combinedState ->
             if (isAdded) {
-                when (val state = combinedState.refresh) {
+                when (val state = combinedState.append) {
                     is LoadState.NotLoading -> {
                         onLoading(showLoading = false)
+                        showEmptyView(
+                            show = tasksAdapter.itemCount < 1,
+                            if (binding.searchView.query.isEmpty())
+                                null
+                            else
+                                getString(R.string.home_error_no_data)
+                        )
                     }
                     is LoadState.Loading -> {
-                        onLoading(showLoading = true)
+                        onLoading(showLoading = !state.endOfPaginationReached)
                     }
                     is LoadState.Error -> {
                         onLoading(showLoading = false)
@@ -93,8 +101,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         )
                     }
                 }
-                if (combinedState.append is LoadState.NotLoading && combinedState.append.endOfPaginationReached) {
-                    showEmptyView(show = tasksAdapter.itemCount < 1, getString(R.string.home_error_no_data))
+                when (val state = combinedState.refresh) {
+                    is LoadState.Loading -> onLoading(showLoading = !state.endOfPaginationReached)
                 }
             }
         }
@@ -103,7 +111,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private fun showEmptyView(show: Boolean, errorMessage: String?) {
         binding.emptyView.root.visibleOrGone(show)
         binding.emptyView.tvError.visibleOrGone(!errorMessage.isNullOrEmpty())
-        binding.emptyView.tvError.text = errorMessage
+        lifecycleScope.launch {
+            // adding delay to show error message in case user changes query faster
+            delay(500)
+            binding.emptyView.tvError.text = errorMessage
+        }
     }
 
     private fun onLoading(showLoading: Boolean) = when {

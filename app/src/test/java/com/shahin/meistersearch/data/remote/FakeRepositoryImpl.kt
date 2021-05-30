@@ -6,7 +6,7 @@ import com.shahin.meistersearch.data.Repository
 import com.shahin.meistersearch.data.remote.models.response.paging.PagingResult
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
-import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import com.shahin.meistersearch.network.NetworkResult
 import kotlinx.coroutines.flow.Flow
 
@@ -26,7 +26,7 @@ class FakeRepositoryImpl: Repository {
         ))
     }
 
-    override suspend fun searchPaging(query: String): Flow<PagingData<TaskItem>> {
+    override suspend fun searchPaging(query: String): Flow<PagingData<TaskResult>> {
         TODO("Not yet implemented")
     }
 }

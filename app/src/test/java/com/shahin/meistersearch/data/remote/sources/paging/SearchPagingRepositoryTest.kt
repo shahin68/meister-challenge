@@ -4,7 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
-import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
+import com.shahin.meistersearch.data.remote.sources.paging.search.SearchPagingRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -16,8 +17,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
-class PagingRepositoryTest {
+@OptIn(ExperimentalCoroutinesApi::class)
+class SearchPagingRepositoryTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -40,14 +41,14 @@ class PagingRepositoryTest {
         val filterBody = FilterBody(
             text = "hello"
         )
-        val taskItem = TaskItem(
+        val taskItem = TaskResult(
             id = 0
         )
-        val list = arrayListOf<TaskItem>()
+        val list = arrayListOf<TaskResult>()
         for (i in 0 until 50) {
             list.add(taskItem)
         }
-        val pagingSource = PagingRepository(
+        val pagingSource = SearchPagingRepository(
             filterBody,
             FakePagingDataSource()
         )
@@ -71,7 +72,7 @@ class PagingRepositoryTest {
     @Test
     fun `test empty filter should pass`() = runBlockingTest {
         val filterBody = FilterBody()
-        val pagingSource = PagingRepository(
+        val pagingSource = SearchPagingRepository(
             filterBody,
             FakePagingDataSource()
         )

@@ -14,7 +14,7 @@ val roomModule = module {
 }
 
 private fun provideDatabase(application: Application): AppDatabase {
-    return Room.databaseBuilder(application, AppDatabase::class.java, "meister_db")
+    return Room.databaseBuilder(application, AppDatabase::class.java, "meisterdb")
         .fallbackToDestructiveMigration()
         .build()
 }

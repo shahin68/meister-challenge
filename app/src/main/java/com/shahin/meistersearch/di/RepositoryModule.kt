@@ -16,7 +16,7 @@ import org.koin.dsl.module
  */
 val repositoryModule = module {
     single<LocalRepository> { LocalRepositoryImpl(get()) }
-    single<RemoteRepository> { RemoteRepositoryImpl(get(), get(), get()) }
+    single<RemoteRepository> { RemoteRepositoryImpl(get(), get(), get(), get()) }
     single<Repository> { RepositoryImpl(get(), get()) }
     single<PagingDataSource> { PagingDataSourceImpl(get(), get()) }
     single { createGsonInstance() }

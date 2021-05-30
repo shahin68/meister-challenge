@@ -1,28 +1,38 @@
-package com.shahin.meistersearch.data.remote.sources.paging
+package com.shahin.meistersearch.data.remote.sources.paging.search
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
-import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
+import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
+import com.shahin.meistersearch.data.remote.sources.paging.PagingDataSource
+import com.shahin.meistersearch.general.paging.BasePagingSource
 import retrofit2.HttpException
 import java.io.IOException
 
-class PagingRepository(
+/**
+ * Paging Source
+ * Responsible for handling seamless paginated api calls
+ *
+ * This source class does not handle any DB process
+ * and only is designed to return a stream of paginated api responses
+ *
+ * Paging 3 also provides RemoteMediator Helper class to use to integrate
+ * a combined flow of Network & DB data
+ * @see SearchRemoteMediator
+ *
+ * ***Extended from [BasePagingSource] which provides basic behaviour***
+ *
+ * Returns [Flow] of [TaskResult]
+ */
+class SearchPagingRepository(
     private val filterBody: FilterBody,
     private val pagingDataSource: PagingDataSource
-) : PagingSource<Int, TaskItem>() {
+) : BasePagingSource<TaskResult>() {
 
     private val startPage = 1
     private val limit = 50
 
-    override fun getRefreshKey(state: PagingState<Int, TaskItem>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
-        }
-    }
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TaskItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TaskResult> {
         val position = params.key ?: startPage
 
         try {

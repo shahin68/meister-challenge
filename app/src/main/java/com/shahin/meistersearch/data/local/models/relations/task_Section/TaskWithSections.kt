@@ -2,8 +2,8 @@ package com.shahin.meistersearch.data.local.models.relations.task_Section
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.shahin.meistersearch.data.local.models.Section
-import com.shahin.meistersearch.data.local.models.Task
+import com.shahin.meistersearch.data.local.models.entities.Section
+import com.shahin.meistersearch.data.local.models.entities.Task
 
 /**
  * One to Many Relation between [Task] & [Section] list
