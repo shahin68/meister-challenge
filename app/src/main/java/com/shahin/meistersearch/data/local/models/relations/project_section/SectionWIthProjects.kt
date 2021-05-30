@@ -8,14 +8,14 @@ import com.shahin.meistersearch.data.local.models.Section
 
 /**
  * Many to Many relation between [Project] list & [Section] list
- * (Sections related to a Project)
+ * (Projects related to a Section)
  */
-data class SectionWithProjects(
-    @Embedded val project: Project,
+data class SectionWIthProjects(
+    @Embedded val section: Section,
     @Relation(
-        parentColumn = "project_id",
-        entityColumn = "section_project_id",
+        parentColumn = "section_project_id",
+        entityColumn = "project_id",
         associateBy = Junction(ProjectSectionCrossRef::class)
     )
-    val sections: List<Section>
+    val projects: List<Project>
 )

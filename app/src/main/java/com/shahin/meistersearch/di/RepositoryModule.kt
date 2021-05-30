@@ -15,7 +15,7 @@ import org.koin.dsl.module
  * module responsible for creation of repository classes
  */
 val repositoryModule = module {
-    single<LocalRepository> { LocalRepositoryImpl() }
+    single<LocalRepository> { LocalRepositoryImpl(get()) }
     single<RemoteRepository> { RemoteRepositoryImpl(get(), get(), get()) }
     single<Repository> { RepositoryImpl(get(), get()) }
     single<PagingDataSource> { PagingDataSourceImpl(get(), get()) }
