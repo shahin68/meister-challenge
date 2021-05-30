@@ -1,22 +1,19 @@
 package com.shahin.meistersearch.data.remote.sources.paging
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.paging.*
-import com.google.common.truth.Truth.*
+import androidx.paging.PagingSource
+import com.google.common.truth.Truth.assertThat
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
-import com.shahin.meistersearch.data.remote.models.response.paging.PagingResult
-import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
-import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskItem
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.test.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
-
 import org.junit.Test
 
 @ExperimentalCoroutinesApi

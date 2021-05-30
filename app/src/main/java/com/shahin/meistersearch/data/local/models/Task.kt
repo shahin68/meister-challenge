@@ -3,16 +3,23 @@ package com.shahin.meistersearch.data.local.models
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "tasks")
+/**
+ * Data class representing DB Task Item
+ */
+@Entity(
+    tableName = "tasks",
+    indices = [Index(value = ["task_section_id"])]
+)
 data class Task(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = false)
     @NonNull
-    @ColumnInfo(name = "id")
-    val id: Int,
+    @ColumnInfo(name = "task_id")
+    val taskId: Int,
 
     @ColumnInfo(name = "task_name") val taskName: String,
     @ColumnInfo(name = "status") val status: Int,
-    @ColumnInfo(name = "section_id") val sectionId: Int
+    @ColumnInfo(name = "task_section_id") val taskSectionId: Int
 )
