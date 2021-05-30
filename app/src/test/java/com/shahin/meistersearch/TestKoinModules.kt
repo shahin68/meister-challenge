@@ -2,6 +2,7 @@ package com.shahin.meistersearch
 
 import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
+import com.shahin.meistersearch.di.roomModule
 import com.shahin.meistersearch.di.uiModule
 import org.junit.After
 import org.junit.Before
@@ -27,7 +28,8 @@ class TestKoinModules {
             modules(
                 uiModule,
                 repositoryModule,
-                networkModule
+                networkModule,
+                roomModule
             )
         }
     }

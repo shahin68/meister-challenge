@@ -12,7 +12,10 @@ class FakePagingDataSource: PagingDataSource {
     private var currentPage = 0
 
     private val taskItem = TaskResult(
-        id = 0
+        id = 0,
+        name = "",
+        status = 1,
+        sectionId = 1
     )
 
     override suspend fun search(

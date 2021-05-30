@@ -42,7 +42,10 @@ class SearchPagingRepositoryTest {
             text = "hello"
         )
         val taskItem = TaskResult(
-            id = 0
+            id = 0,
+            name = "",
+            status = 1,
+            sectionId = 1
         )
         val list = arrayListOf<TaskResult>()
         for (i in 0 until 50) {
