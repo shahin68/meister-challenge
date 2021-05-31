@@ -27,11 +27,23 @@
 
         <!--autocomplete view-->
         <item name="autoCompleteTextViewStyle">@style/AutoCompleteTextView</item>
+
+        <!--linear progress bar-->
+        <item name="linearProgressIndicatorStyle">@style/LinearProgressIndicator</item>
+
+        <!--material dialog theme-->
+        <item name="materialAlertDialogTheme">@style/MaterialDialogStyle</item>
+
+        <!--scroll view style-->
+        <item name="android:scrollViewStyle">@style/ScrollViewStyle_Vertical</item>
+        <item name="android:horizontalScrollViewStyle">@style/ScrollViewStyle_Horizontal</item>
     </style>
 
     <!--region Card View Style-->
     <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">@dimen/generic_size_8dp</item>
+        <item name="cardElevation">@dimen/cardview_elevation</item>
         <item name="android:foreground">?android:selectableItemBackground</item>
     </style>
     <!--endregion-->
@@ -39,9 +51,9 @@
     <!--region Material Button Style-->
     <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="rippleColor">?attr/colorOnSurface</item>
-        <item name="backgroundTint">?attr/colorAccent</item>
         <item name="shapeAppearanceOverlay">@style/MaterialButtonShape</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="backgroundTint">@color/button_selector</item>
     </style>
     <style name="MaterialButtonShape">
         <item name="cornerFamily">rounded</item>
@@ -50,7 +62,7 @@
     <!--endregion-->
 
     <!--region Toolbar Style-->
-    <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorSurface</item>
         <item name="contentInsetRight">0dp</item>
         <item name="contentInsetStart">0dp</item>
@@ -69,6 +81,53 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textColorHint">?attr/colorOnPrimary</item>
         <item name="android:textSize">@dimen/generic_text_size_16sp</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Progressbar Style-->
+    <style name="LinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.LinearProgressIndicator</item>
+        <item name="trackThickness">@dimen/progressbar_thickness</item>
+        <item name="showAnimationBehavior">inward</item>
+        <item name="hideAnimationBehavior">inward</item>
+    </style>
+
+    <style name="ThemeOverlay.App.LinearProgressIndicator" parent="">
+        <item name="colorPrimary">@color/purple_700</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Material Dialog Style-->
+    <style name="MaterialDialogStyle" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/ThemeOverlay.App.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/ThemeOverlay.App.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ThemeOverlay.App.Button</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:foreground">@drawable/ripple_6dp</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Scroll View Style-->
+    <style name="ScrollViewStyle_Vertical" >
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarThumbVertical">@color/purple_700</item>
+        <item name="android:fadingEdgeLength">@dimen/generic_size_16dp</item>
+        <item name="android:requiresFadingEdge">vertical</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Scroll View Style-->
+    <style name="ScrollViewStyle_Horizontal" >
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarThumbVertical">@color/purple_700</item>
+        <item name="android:fadingEdgeLength">@dimen/generic_size_16dp</item>
+        <item name="android:requiresFadingEdge">horizontal</item>
     </style>
     <!--endregion-->
 </resources>

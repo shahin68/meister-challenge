@@ -11,10 +11,13 @@
     <color name="primary_light">#edf1f2</color>
     <color name="primary_dark">#181f22</color>
 
+    <color name="on_background_light">#D0D4D6</color>
+    <color name="on_background_dark">#5A6368</color>
+
     <color name="on_primary_light">#a7b2b8</color>
     <color name="on_primary_dark">#414b51</color>
 
-    <color name="accent_light">#99a7ae</color>
+    <color name="accent_light">#72828b</color>
     <color name="accent_dark">#72828b</color>
 
     <color name="vibrant_light">#FFFFFFFF</color>

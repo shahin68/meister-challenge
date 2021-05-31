@@ -2,6 +2,7 @@ package com.shahin.meistersearch.di
 
 import com.shahin.meistersearch.BuildConfig
 import com.shahin.meistersearch.data.local.sources.LocalRepository
+import com.shahin.meistersearch.data.remote.services.Api
 import com.shahin.meistersearch.network.HttpInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,6 +17,11 @@ import java.util.concurrent.TimeUnit
 val networkModule = module {
     single { buildRetrofit(get()) }
     factory { buildOkHttpClient(get()) }
+    factory { provideApiService(get()) }
+}
+
+fun provideApiService(retrofit: Retrofit): Api {
+    return retrofit.create(Api::class.java)
 }
 
 /**

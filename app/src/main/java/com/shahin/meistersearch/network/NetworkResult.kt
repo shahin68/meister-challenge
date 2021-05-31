@@ -1,6 +1,6 @@
 package com.shahin.meistersearch.network
 
-import com.shahin.meistersearch.data.remote.models.ErrorResponse
+import com.shahin.meistersearch.data.remote.models.response.error.ErrorResponse
 
 /**
  * class representing restricted network response
@@ -15,7 +15,7 @@ sealed class NetworkResult<out T> {
     /**
      * interface representing error response
      */
-    data class Error<out T>(val error: ErrorResponse): NetworkResult<T>()
+    data class Error<out T>(val error: ErrorResponse? = null): NetworkResult<T>()
 
     /**
      * interface representing network failure

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Meister Search</string>
     <string name="generic_placeholder_search">Search …</string>
+    <string name="empty_view_text_desc">Search for a task using a few keywords</string>
+    <string name="home_error_text_no_network">Please check your network connection!</string>
+    <string name="home_error_no_data">Nothing found!</string>
+    <string name="generic_action_ok">Ok</string>
+    <string name="home_text_filtering_desc">You can search for task titles, notes, users using @, tags using #, checklist items, and much more.</string>
 </resources>
