@@ -11,3 +11,7 @@ import android.view.ViewGroup
 fun <T: ViewGroup> T.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
+
+fun <T: ViewGroup> T.inflater(): LayoutInflater {
+    return LayoutInflater.from(context)
+}

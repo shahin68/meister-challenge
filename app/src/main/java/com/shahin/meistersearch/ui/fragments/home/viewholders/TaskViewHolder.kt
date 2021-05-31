@@ -7,17 +7,23 @@ import com.shahin.meistersearch.general.views.ViewClickCallback
 import com.shahin.meistersearch.ui.fragments.home.models.TaskItem
 
 class TaskViewHolder(
-    itemView: View,
+    private val binding: ItemTaskBinding,
     clickCallback: (
         view: View,
         position: Int,
         viewClickCallback: ViewClickCallback<TaskItem>
     ) -> Unit
-) : ClickableViewHolder<TaskItem>(itemView, clickCallback) {
-    private val binding = ItemTaskBinding.bind(itemView)
+) : ClickableViewHolder<TaskItem>(binding.root, clickCallback) {
     override fun bind(item: TaskItem) {
         super.bind(item)
-        binding.tvProjectName.text = item.projectName
-        binding.tvTaskName.text = item.taskName
+
+        // Data Binding
+        binding.task = item
+
+
+
+        // View Binding Implementations
+        /*binding.tvProjectName.text = item.projectName
+        binding.tvTaskName.text = item.taskName*/
     }
 }

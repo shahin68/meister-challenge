@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.shahin.meistersearch.R
-import com.shahin.meistersearch.general.extensions.inflate
+import com.shahin.meistersearch.databinding.ItemTaskBinding
+import com.shahin.meistersearch.general.extensions.inflater
 import com.shahin.meistersearch.general.views.ViewClickCallback
 import com.shahin.meistersearch.ui.fragments.home.models.TaskItem
 import com.shahin.meistersearch.ui.fragments.home.viewholders.TaskViewHolder
@@ -20,7 +20,9 @@ class TasksAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
-            parent.inflate(R.layout.item_task),
+            ItemTaskBinding.inflate(
+                parent.inflater(), parent, false
+            ),
             clickCallback
         )
     }

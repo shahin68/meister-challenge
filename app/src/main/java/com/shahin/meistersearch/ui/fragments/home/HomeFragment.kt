@@ -10,7 +10,6 @@ import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.databinding.FragmentHomeBinding
 import com.shahin.meistersearch.general.adapters.MyLoadStateAdapter
 import com.shahin.meistersearch.general.extensions.onQueryFlow
-import com.shahin.meistersearch.general.extensions.visibleOrGone
 import com.shahin.meistersearch.general.preferences.SEARCH_TRIGGER_DELAY
 import com.shahin.meistersearch.general.views.ViewClickCallback
 import com.shahin.meistersearch.ui.fragments.BaseFragment
@@ -177,7 +176,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             if (isAdded) {
                 when (val state = combinedState.append) {
                     is LoadState.NotLoading -> {
-                        onLoading(showLoading = false)
+                        onLoading(showOrHide = false)
                         showEmptyView(
                             show = tasksAdapter.itemCount < 1,
                             if (binding.searchView.query.isEmpty())
@@ -187,40 +186,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         )
                     }
                     is LoadState.Loading -> {
-                        onLoading(showLoading = !state.endOfPaginationReached)
+                        onLoading(showOrHide = !state.endOfPaginationReached)
                     }
                     is LoadState.Error -> {
-                        onLoading(showLoading = false)
+                        onLoading(showOrHide = false)
                         showEmptyView(
                             show = true, state.error.localizedMessage
                         )
                     }
                 }
                 when (val state = combinedState.refresh) {
-                    is LoadState.Loading -> onLoading(showLoading = !state.endOfPaginationReached)
+                    is LoadState.Loading -> onLoading(showOrHide = !state.endOfPaginationReached)
                 }
             }
         }
     }
 
     private fun showEmptyView(show: Boolean, errorMessage: String?) {
-        binding.emptyView.visibleOrGone(show)
+        binding.showEmptyView = show
         lifecycleScope.launch {
             // adding delay to show error message in case user changes query faster
             delay(500)
             if (isAdded && isVisible) {
-                binding.tvError.text = errorMessage
+                binding.errorText = errorMessage
             }
         }
     }
 
-    private fun onLoading(showLoading: Boolean) = when {
-        showLoading -> {
-            binding.loading.show()
-        }
-        else -> {
-            binding.loading.hide()
-        }
+    private fun onLoading(showOrHide: Boolean) {
+        binding.showLoading = showOrHide
     }
 
     override fun onDestroy() {

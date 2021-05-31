@@ -6,7 +6,15 @@
 
     <data>
 
+        <variable
+            name="showLoading"
+            type="java.lang.Boolean" />
 
+        <variable
+            name="showEmptyView"
+            type="java.lang.Boolean" />
+
+        <variable name="errorText" type="String"/>
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -41,6 +49,7 @@
                         android:id="@+id/loading"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:showOrHideLoading="@{showLoading}"
                         android:indeterminate="true" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
@@ -75,6 +84,7 @@
                 android:textSize="@dimen/generic_text_size_16sp"
                 android:textStyle="bold"
                 android:visibility="gone"
+                android:text="@{errorText}"
                 app:layout_constraintBottom_toTopOf="@+id/iv_central"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -155,6 +165,7 @@
                 android:id="@+id/empty_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:viewIsVisible="@{showEmptyView}"
                 app:constraint_referenced_ids="tv_desc,iv_central,tv_error" />
 
             <androidx.constraintlayout.widget.Guideline

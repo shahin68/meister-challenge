@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.shahin.meistersearch.R
-import com.shahin.meistersearch.general.extensions.inflate
+import com.shahin.meistersearch.databinding.ItemFilterBinding
+import com.shahin.meistersearch.general.extensions.inflater
 import com.shahin.meistersearch.general.views.ViewClickCallback
 import com.shahin.meistersearch.ui.fragments.home.filter.FilterItem
 import com.shahin.meistersearch.ui.fragments.home.viewholders.FilterViewHolder
@@ -20,7 +20,9 @@ class FiltersAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
         return FilterViewHolder(
-            parent.inflate(R.layout.item_filter),
+            ItemFilterBinding.inflate(
+                parent.inflater(), parent, false
+            ),
             clickCallback
         )
     }
