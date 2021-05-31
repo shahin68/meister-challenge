@@ -7,8 +7,7 @@ import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import retrofit2.Response
 
-class FakePagingDataSource: PagingDataSource {
-
+class FakePagingDataAndroidSource: PagingDataSource {
     private var currentPage = 0
 
     private val taskItem = TaskResult(

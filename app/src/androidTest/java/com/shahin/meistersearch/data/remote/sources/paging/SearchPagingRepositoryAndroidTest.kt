@@ -2,42 +2,37 @@ package com.shahin.meistersearch.data.remote.sources.paging
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingSource
+import androidx.test.runner.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import com.shahin.meistersearch.data.remote.sources.paging.search.SearchPagingRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.setMain
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class SearchPagingRepositoryTest {
+@RunWith(AndroidJUnit4::class)
+class SearchPagingRepositoryAndroidTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val testDispatcher = TestCoroutineDispatcher()
-
     @Before
     fun setUp() {
-        Dispatchers.setMain(testDispatcher)
     }
 
     @After
     fun tearDown() {
-        Dispatchers.resetMain()
-        testDispatcher.cleanupTestCoroutines()
     }
 
     @Test
-    fun `test one page should pass`() = runBlockingTest {
+    fun testOnePageShouldPass() = runBlocking {
         val filterBody = FilterBody(
             text = "hello"
         )
@@ -53,7 +48,7 @@ class SearchPagingRepositoryTest {
         }
         val pagingSource = SearchPagingRepository(
             filterBody,
-            FakePagingDataSource()
+            FakePagingDataAndroidSource()
         )
         assertThat(
             pagingSource.load(
@@ -73,11 +68,11 @@ class SearchPagingRepositoryTest {
     }
 
     @Test
-    fun `test empty filter should pass`() = runBlockingTest {
+    fun testEmptyFilterShouldPass() = runBlocking {
         val filterBody = FilterBody()
         val pagingSource = SearchPagingRepository(
             filterBody,
-            FakePagingDataSource()
+            FakePagingDataAndroidSource()
         )
         assertThat(
             pagingSource.load(
