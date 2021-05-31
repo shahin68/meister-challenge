@@ -2,6 +2,7 @@ package com.shahin.meistersearch.ui.fragments.home
 
 import com.google.common.truth.Truth
 import com.shahin.meistersearch.data.Repository
+import com.shahin.meistersearch.data.remote.FakeRepositoryImpl
 import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
 import com.shahin.meistersearch.di.roomModule
@@ -21,18 +22,16 @@ import org.koin.test.inject
 class HomeViewModelTest: KoinTest {
 
     private lateinit var viewModel: HomeViewModel
-    private val repository: Repository by inject()
 
     @Before
     fun setUp() {
         startKoin {
             modules(
                 repositoryModule,
-                networkModule,
-                roomModule
+                networkModule
             )
         }
-        viewModel = HomeViewModel(repository)
+        viewModel = HomeViewModel(FakeRepositoryImpl())
     }
 
     @After
@@ -42,13 +41,9 @@ class HomeViewModelTest: KoinTest {
 
     @Test
     fun `test flow of data from local repo to homeViewModel - should return true`() {
-        val state = viewModel.getToken()
-        print(state)
-        Truth.assertThat(state.isNotBlank())
+        val token = viewModel.getToken()
+        print(token)
+        Truth.assertThat(token.isNotBlank())
     }
 
-    @Test
-    fun `test repository repository injection - should pass`() {
-        assertNotNull(get<Repository>())
-    }
 }
