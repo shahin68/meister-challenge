@@ -4,6 +4,7 @@ import com.google.common.truth.Truth
 import com.shahin.meistersearch.data.Repository
 import com.shahin.meistersearch.di.networkModule
 import com.shahin.meistersearch.di.repositoryModule
+import com.shahin.meistersearch.di.roomModule
 import org.junit.After
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -27,7 +28,8 @@ class HomeViewModelTest: KoinTest {
         startKoin {
             modules(
                 repositoryModule,
-                networkModule
+                networkModule,
+                roomModule
             )
         }
         viewModel = HomeViewModel(repository)
