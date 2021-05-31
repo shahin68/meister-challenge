@@ -3,6 +3,7 @@ package com.shahin.meistersearch.ui.fragments.home
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.shahin.meistersearch.data.remote.FakeRepositoryImpl
+import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.paging.PagingResult
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
@@ -59,7 +60,7 @@ class HomeViewModelNetworkTest {
     }
 
     @Test
-    fun `test flow of paging search should pass`() = runBlockingTest {
+    fun `test paging should pass`() = runBlockingTest {
         val response = viewModel.searchPaging("").toList()
 
         print(response)
@@ -67,8 +68,12 @@ class HomeViewModelNetworkTest {
     }
 
     @Test
-    fun `test flow of paging with db search should pass`() = runBlockingTest {
-        val response = viewModel.searchPagingWithDb("").toList()
+    fun `test paging db should pass`() = runBlockingTest {
+        val response = viewModel.searchPagingWithDb(
+            FilterBody(
+                "Hi", emptyList()
+            )
+        ).toList()
 
         print(response)
         assertThat(response).isNotNull()

@@ -14,6 +14,10 @@
             name="showEmptyView"
             type="java.lang.Boolean" />
 
+        <variable
+            name="showErrorText"
+            type="java.lang.Boolean" />
+
         <variable name="errorText" type="String"/>
     </data>
 
@@ -85,6 +89,7 @@
                 android:textStyle="bold"
                 android:visibility="gone"
                 android:text="@{errorText}"
+                app:viewIsVisible="@{showErrorText}"
                 app:layout_constraintBottom_toTopOf="@+id/iv_central"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

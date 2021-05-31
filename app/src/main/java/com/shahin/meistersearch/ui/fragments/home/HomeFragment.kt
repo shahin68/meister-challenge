@@ -179,10 +179,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         onLoading(showOrHide = false)
                         showEmptyView(
                             show = tasksAdapter.itemCount < 1,
-                            if (binding.searchView.query.isEmpty())
+                            if (!state.endOfPaginationReached) {
                                 null
-                            else
+                            } else if (binding.searchView.query.isNotEmpty() && tasksAdapter.itemCount < 1 && state.endOfPaginationReached) {
                                 getString(R.string.home_error_no_data)
+                            } else {
+                                null
+                            }
                         )
                     }
                     is LoadState.Loading -> {
@@ -196,7 +199,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                     }
                 }
                 when (val state = combinedState.refresh) {
-                    is LoadState.Loading -> onLoading(showOrHide = !state.endOfPaginationReached)
+                    is LoadState.Loading -> {
+                        onLoading(showOrHide = !state.endOfPaginationReached)
+                    }
                 }
             }
         }
