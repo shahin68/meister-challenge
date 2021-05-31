@@ -9,6 +9,7 @@ import com.shahin.meistersearch.data.local.models.entities.Task
 import com.shahin.meistersearch.data.local.models.relations.project_section.ProjectWithSections
 import com.shahin.meistersearch.data.local.models.relations.project_section.SectionWithProjects
 import com.shahin.meistersearch.data.local.models.relations.task_Section.TaskWithSections
+import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.paging.PagingResult
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResponse
 import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
@@ -54,7 +55,7 @@ class FakeRepositoryImpl: Repository {
         )
     }
 
-    override suspend fun searchPagingWithDb(query: String): Flow<PagingData<TaskWithSections>> {
+    override suspend fun searchPagingWithDb(filterBody: FilterBody): Flow<PagingData<TaskWithSections>> {
         return flowOf(
             PagingData.from(
                 listOf(
