@@ -1,7 +1,5 @@
 package com.shahin.meistersearch.data.remote.sources.paging.search
 
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import com.shahin.meistersearch.data.remote.sources.paging.PagingDataSource

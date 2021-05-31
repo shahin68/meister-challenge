@@ -10,6 +10,7 @@ class TaskViewHolder(
     itemView: View,
     clickCallback: (
         view: View,
+        position: Int,
         viewClickCallback: ViewClickCallback<TaskItem>
     ) -> Unit
 ) : ClickableViewHolder<TaskItem>(itemView, clickCallback) {

@@ -15,7 +15,6 @@ import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import com.shahin.meistersearch.network.NetworkResult
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
 class FakeRepositoryImpl: Repository {

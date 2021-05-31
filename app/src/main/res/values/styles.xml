@@ -31,11 +31,12 @@
         <!--linear progress bar-->
         <item name="linearProgressIndicatorStyle">@style/LinearProgressIndicator</item>
 
-        <!--recycler view-->
-        <item name="recyclerViewStyle">@style/RecyclerViewStyle</item>
-
         <!--material dialog theme-->
         <item name="materialAlertDialogTheme">@style/MaterialDialogStyle</item>
+
+        <!--scroll view style-->
+        <item name="android:scrollViewStyle">@style/ScrollViewStyle_Vertical</item>
+        <item name="android:horizontalScrollViewStyle">@style/ScrollViewStyle_Horizontal</item>
     </style>
 
     <!--region Card View Style-->
@@ -52,6 +53,7 @@
         <item name="rippleColor">?attr/colorOnSurface</item>
         <item name="shapeAppearanceOverlay">@style/MaterialButtonShape</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="backgroundTint">@color/button_selector</item>
     </style>
     <style name="MaterialButtonShape">
         <item name="cornerFamily">rounded</item>
@@ -95,15 +97,6 @@
     </style>
     <!--endregion-->
 
-    <!--region Progressbar Style-->
-    <style name="RecyclerViewStyle" parent="">
-        <item name="android:scrollbars">vertical|horizontal</item>
-        <item name="android:scrollbarStyle">outsideOverlay</item>
-        <item name="android:scrollbarThumbVertical">@color/purple_700</item>
-        <item name="android:scrollbarThumbHorizontal">@color/purple_700</item>
-    </style>
-    <!--endregion-->
-
     <!--region Material Dialog Style-->
     <style name="MaterialDialogStyle" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="buttonBarPositiveButtonStyle">@style/ThemeOverlay.App.Button</item>
@@ -115,6 +108,26 @@
         <item name="android:textColor">@color/purple_700</item>
         <item name="android:textStyle">bold</item>
         <item name="android:foreground">@drawable/ripple_6dp</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Scroll View Style-->
+    <style name="ScrollViewStyle_Vertical" >
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarThumbVertical">@color/purple_700</item>
+        <item name="android:fadingEdgeLength">@dimen/generic_size_16dp</item>
+        <item name="android:requiresFadingEdge">vertical</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Scroll View Style-->
+    <style name="ScrollViewStyle_Horizontal" >
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbarThumbVertical">@color/purple_700</item>
+        <item name="android:fadingEdgeLength">@dimen/generic_size_16dp</item>
+        <item name="android:requiresFadingEdge">horizontal</item>
     </style>
     <!--endregion-->
 </resources>

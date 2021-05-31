@@ -11,8 +11,9 @@ import com.shahin.meistersearch.ui.fragments.home.models.TaskItem
 import com.shahin.meistersearch.ui.fragments.home.viewholders.TaskViewHolder
 
 class TasksAdapter(
-    private val clickBlock: (
+    private val clickCallback: (
         view: View,
+        position: Int,
         viewClickCallback: ViewClickCallback<TaskItem>
     ) -> Unit
 ): PagingDataAdapter<TaskItem, TaskViewHolder>(DiffCallback) {
@@ -20,7 +21,7 @@ class TasksAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
             parent.inflate(R.layout.item_task),
-            clickBlock
+            clickCallback
         )
     }
 
@@ -37,7 +38,7 @@ class TasksAdapter(
         }
 
         override fun areContentsTheSame(oldItem: TaskItem, newItem: TaskItem): Boolean {
-            return oldItem.taskName.equals(newItem.taskName)
+            return oldItem.taskName.equals(newItem.taskName, ignoreCase = true)
         }
     }
 

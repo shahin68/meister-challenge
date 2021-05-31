@@ -14,6 +14,7 @@ abstract class ClickableViewHolder<T>(
     itemView: View,
     private val clickCallback: (
         view: View,
+        position: Int,
         viewClickCallback: ViewClickCallback<T>
     ) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
@@ -21,6 +22,7 @@ abstract class ClickableViewHolder<T>(
         onClick { _, _, _ ->
             clickCallback.invoke(
                 itemView,
+                bindingAdapterPosition,
                 ViewClickCallback.ToOpen(item)
             )
         }

@@ -69,6 +69,10 @@ interface AppDao {
     fun getTasksWithSections(): PagingSource<Int, TaskWithSections>
 
     @Transaction
+    @Query("SELECT * FROM tasks WHERE status LIKE :status")
+    fun getTasksWithSectionsByStatus(status: Int): PagingSource<Int, TaskWithSections>
+
+    @Transaction
     @Query("SELECT * FROM tasks WHERE task_section_id LIKE :sectionId")
     fun getTasksWithSections(sectionId: Int): PagingSource<Int, TaskWithSections>
 

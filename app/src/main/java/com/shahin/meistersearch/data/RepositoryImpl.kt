@@ -36,11 +36,9 @@ class RepositoryImpl(
         )
     }
 
-    override suspend fun searchPagingWithDb(query: String): Flow<PagingData<TaskWithSections>> {
+    override suspend fun searchPagingWithDb(filterBody: FilterBody): Flow<PagingData<TaskWithSections>> {
         return remoteRepository.searchPagingWithDb(
-            FilterBody(
-                text = query
-            )
+            filterBody
         )
     }
 

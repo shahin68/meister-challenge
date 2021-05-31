@@ -12,8 +12,8 @@ import com.shahin.meistersearch.data.remote.models.response.search.SearchRespons
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import com.shahin.meistersearch.data.remote.services.Api
 import com.shahin.meistersearch.data.remote.sources.paging.PagingDataSource
-import com.shahin.meistersearch.data.remote.sources.paging.search.SearchRemoteMediator
 import com.shahin.meistersearch.data.remote.sources.paging.search.SearchPagingRepository
+import com.shahin.meistersearch.data.remote.sources.paging.search.SearchRemoteMediator
 import com.shahin.meistersearch.network.NetworkResult
 import kotlinx.coroutines.flow.Flow
 
@@ -71,7 +71,11 @@ class RemoteRepositoryImpl(
                 pagingDataSource
             ),
         ) {
-            appDao.getTasksWithSections()
+            if (filterBody.status.isEmpty()) {
+                appDao.getTasksWithSections()
+            } else {
+                appDao.getTasksWithSectionsByStatus(filterBody.status.first())
+            }
         }.flow
     }
 

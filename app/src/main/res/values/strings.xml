@@ -5,4 +5,5 @@
     <string name="home_error_text_no_network">Please check your network connection!</string>
     <string name="home_error_no_data">Nothing found!</string>
     <string name="generic_action_ok">Ok</string>
+    <string name="home_text_filtering_desc">You can search for task titles, notes, users using @, tags using #, checklist items, and much more.</string>
 </resources>
