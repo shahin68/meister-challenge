@@ -4,12 +4,15 @@ package com.shahin.meistersearch.ui
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.NoMatchingViewException
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
+import com.google.common.truth.Truth
 import com.shahin.meistersearch.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -19,6 +22,7 @@ import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
@@ -119,6 +123,61 @@ class MainActivityTest {
         searchAutoComplete2.perform(replaceText("hhhhh"), closeSoftKeyboard())
 
         emptyView.check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testIfErrorTvWithNoDataStringIsShownShouldPass() {
+        val query = "buy"
+
+
+        val searchView = onView(
+            allOf(
+                withId(R.id.search_view)
+            )
+        )
+        searchView.perform(replaceText(query))
+
+        val errorTv = onView(
+            allOf(
+                withId(R.id.tv_error),
+                withText(R.string.home_error_no_data)
+            )
+        ).isVisible()
+
+        Truth.assertThat(errorTv).isFalse()
+    }
+
+    @Test
+    fun testQuicklyClearingSearchViewShouldPass() {
+        val query = "buy"
+
+        val searchView = onView(
+            allOf(
+                withId(R.id.search_view),
+                isDisplayed()
+            )
+        )
+
+        Mockito.`when`(searchView.perform(replaceText(query)))
+            .thenReturn(searchView.perform(replaceText("")))
+
+
+        val loading = onView(
+            allOf(
+                withId(R.id.loading)
+            )
+        ).isVisible()
+
+        Truth.assertThat(loading).isFalse()
+    }
+
+    private fun ViewInteraction.isVisible(): Boolean {
+        try {
+            check(matches(isDisplayed()))
+            return true
+        } catch (e: NoMatchingViewException) {
+            return false
+        }
     }
 
     private fun childAtPosition(
