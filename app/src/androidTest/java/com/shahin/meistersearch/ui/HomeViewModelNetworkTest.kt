@@ -12,7 +12,6 @@ import com.shahin.meistersearch.data.remote.models.response.search.SearchResult
 import com.shahin.meistersearch.network.NetworkResult
 import com.shahin.meistersearch.ui.fragments.home.HomeViewModel
 import getOrAwaitValueAndroid
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking

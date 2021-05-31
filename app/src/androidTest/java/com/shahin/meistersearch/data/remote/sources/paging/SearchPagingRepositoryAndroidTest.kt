@@ -7,7 +7,6 @@ import com.google.common.truth.Truth.assertThat
 import com.shahin.meistersearch.data.remote.models.body.FilterBody
 import com.shahin.meistersearch.data.remote.models.response.search.items.TaskResult
 import com.shahin.meistersearch.data.remote.sources.paging.search.SearchPagingRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.After
