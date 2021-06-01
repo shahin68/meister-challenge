@@ -34,13 +34,13 @@ interface Api {
      *
      *
      *
-     * Example of exposed (No token in header meaning it's exposed to calls)
-     * <pre>
-     * <code>
-     * @POST("")
-     * @Headers("Exposed: true", "Monolingual: true")
-     * suspend fun exposedCallExample(): Response<Any>
-     * </pre>
+     * Example of exposed (No token in header meaning it's exposed to calls):
+     * ```kotlin
+     *    @POST("")
+     *    @Headers("Exposed: true", "Monolingual: true")
+     *    suspend fun exposedCallExample(): Response<Any>
+     * ```
+     *
      *
      *@return search response
      */
@@ -53,5 +53,4 @@ interface Api {
         @Query("sort") sort: String = "id",
         @Query("response_format") responseFormat: String = "object",
     ): Response<SearchResponse>
-
 }
